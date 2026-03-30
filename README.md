@@ -4,3 +4,15 @@
 
 
 #폴더 구조
+src/
+ ├─ components/
+ │   ├─ Header.jsx
+ │   ├─ TodoInput.jsx
+ │   ├─ TodoList.jsx
+ │   └─ TodoItem.jsx
+ │
+ ├─ App.jsx
+ ├─ App.css
+ └─ main.jsx
+                    
+
