@@ -1,0 +1,8 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  gap: 10px;
+  width: 500px;
+  margin: 0 auto;
+}
