@@ -3,6 +3,7 @@ import "./Todo.css";
 
 const TodoItem = ({ todos, handleModiTodo, todoModi, todoDelete }) => {
   const inputRef = useRef(null);
+
   useEffect(() => {
     if (todos.isEdit) {
       inputRef.current.focus();

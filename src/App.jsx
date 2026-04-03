@@ -1,13 +1,33 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import { formatDate } from "./utils/date.js";
+import { useRef, useState } from "react";
 import TodoHeader from "./components/TodoHeader";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-
+const mokupData = [
+  {
+    id: 1,
+    contents: "hello",
+    tDate: formatDate(),
+    isEdit: false,
+  },
+  {
+    id: 2,
+    contents: "밥먹기",
+    tDate: formatDate(),
+    isEdit: false,
+  },
+  {
+    id: 3,
+    contents: "똥싸기",
+    tDate: formatDate(),
+    isEdit: false,
+  },
+];
 function App() {
   const [tmpInput, setTmpInput] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(mokupData);
+  const inputRef = useRef(null);
 
   const todoModi = (idx) => {
     setTodos(
@@ -20,11 +40,22 @@ function App() {
   };
 
   const todoDelete = (idx) => {
-    console.log(idx);
+    if (!confirm("삭제하시겠습니까?")) {
+      return;
+    }
+
+    setTodos(
+      todos.filter((todo) => {
+        return todo.id != idx;
+      })
+    );
   };
 
   const handleAddTodo = () => {
-    if (!tmpInput.trim()) return;
+    if (!tmpInput.trim()) {
+      inputRef.current.focus();
+      return;
+    }
 
     const newTodo = {
       id: todos.length + 1,
@@ -53,6 +84,7 @@ function App() {
           setTmpInput={setTmpInput}
           tmpInput={tmpInput}
           handleAddTodo={handleAddTodo}
+          inputRef={inputRef}
         />
         <TodoList
           todos={todos}

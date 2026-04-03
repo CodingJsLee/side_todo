@@ -1,12 +1,8 @@
-/* .example-line {
-  border: 1px solid black;
-} */
-
 .todo-header {
   padding: 10px;
 }
 
-.todo-input {
+.todo-input > form {
   display: flex;
   gap: 10px;
 }
